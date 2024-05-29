@@ -40,8 +40,29 @@ const deletePost = async (req,res) =>{
 
 }
 
+const updatePost = async (req,res) =>{
+
+  try {
+    if (req.file !== undefined) {
+      
+        var id = req.body.id;
+        var title = req.body.title;
+        var date = req.body.date;
+        var filename = req.file.filename;
+        
+
+    } else {
+      
+    }
+  } catch (error) {
+    res.status(400).send({success:false,msg:error.message})
+  }
+
+}
+
 module.exports = {
   createPost,
   getPosts,
-  deletePost
+  deletePost,
+  updatePost
 }

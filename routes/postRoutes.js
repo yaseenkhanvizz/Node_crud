@@ -34,5 +34,5 @@ const postController = require('../controllers/postController');
 post_route.post('/create-post',upload.single('image'),postController.createPost);
 post_route.get('/get-post',postController.getPosts);
 post_route.get('/delete-post/:id',postController.deletePost);
-
+post_route.post('/update-post',upload.single('image'),postController.updatePost);
 module.exports = post_route;
