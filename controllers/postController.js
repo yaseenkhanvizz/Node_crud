@@ -49,10 +49,14 @@ const updatePost = async (req,res) =>{
         var title = req.body.title;
         var date = req.body.date;
         var filename = req.file.filename;
-        
-
+        await Post.findByIdAndUpdate({_id:id},{$set:{ title:title,date:date,image:filename }});
+        res.status(200).send({success:true,msg: 'Post Data Updated successfully'});
     } else {
-      
+        var id = req.body.id;
+        var title = req.body.title;
+        var date = req.body.date;
+        await Post.findByIdAndUpdate({_id:id},{$set:{ title:title,date:date}});
+        res.status(200).send({success:true,msg: 'Post Data Updated successfully'});
     }
   } catch (error) {
     res.status(400).send({success:false,msg:error.message})
